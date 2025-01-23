@@ -1,0 +1,15 @@
+---
+- name: Execute a curl command using Ansible
+  hosts: localhost
+  tasks:
+    - name: Perform a curl request
+      command: >
+        curl -X POST "https://api.example.com/resource"
+        -H "Content-Type: application/json"
+        -H "Authorization: Bearer YOUR_API_TOKEN"
+        -d '{"key1": "value1", "key2": "value2"}'
+      register: curl_output
+
+    - name: Display curl response
+      debug:
+        msg: "{{ curl_output.stdout }}"
